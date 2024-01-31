@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片加载</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    img{
+        width: 640px;
+        height: 425px;
+        display: block;
+    }
+</style>
+<body>
+    <div class="img-boxs">
+        <img  alt="" data-src="./images/one.jpeg">
+        <img  alt="" data-src="./images/two.jpeg">
+        <img  alt="" data-src="./images/three.jpeg">
+        <img  alt="" data-src="./images/four.jpeg">
+        <img  alt="" data-src="./images/five.jpeg">
+    </div>
+</body>
+
+<script>
+    // 1、获取所有的图片
+    let imgs = document.querySelectorAll('.img-boxs img');
+    // 2、遍历图片
+    function loadImg(img){
+        for(let i = 0;i<imgs.length;i++){
+        // 3、判断图片是否在可视范围内
+        let img = imgs[i];
+        if(img.getBoundingClientRect().top<window.innerHeight){
+            // 4、如果在可视范围内，加载图片
+            img.src = img.dataset.src;
+        }
+    }
+    }
+    loadImg()
+    // 5、监听滚动
+    window.onscroll = loadImg;
+   
+</script>
+</html>
