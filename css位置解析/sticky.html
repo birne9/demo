@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sticky粘性定位</title>
+</head>
+<style>
+     *{
+        padding: 0;
+        margin: 0;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .boxs{
+        height: 50vh;
+        overflow-y: scroll;
+    }
+  
+    .box{
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        margin-bottom: 10px;
+        position: sticky;
+    }
+    .box1{
+        background-color: #000;
+        width: 90px;
+        z-index: 1;
+        top: 10px;
+    }
+    .box2{
+        background-color: #eee;
+        width: 80px;
+        z-index: 2;
+        top: 10px;
+    }
+    .box3{
+        background-color: #f5f5;
+        width: 70px;
+        z-index: 3;
+        top: 10px;
+    }
+    .box4{
+        background-color: #777;
+        width: 60px;
+        z-index: 4;
+        top: 10px;
+    }
+    .box5{
+        background-color: #666;
+        width: 50px;
+        z-index: 4;
+        top: 10px;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="boxs">
+            <div class="box"></div>
+            <div class="box box1"></div>
+            <div class="box box2"></div>
+            <div class="box box3"></div>
+            <div class="box box4"></div>
+            <div class="box box5"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+       
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fixed固定定位</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .boxs{
+        width: 100vw;
+        height: 200vh;
+        background-color: red;
+    }
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        text-align: center;
+        line-height: 100px;
+        color: white;
+    }
+</style>
+<body>
+    <div class="boxs">
+        <div class="box">
+            固定位置
+        </div>
+    </div>
+</body>
+</html>
