@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海报下载</title>
+    <script src="./asset/js/html2canvas.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .boxs img {
+        width: 300px;
+        height: 300px;
+    }
+</style>
+
+<body>
+    <div class="boxs">
+        <img src="./asset/image/avatar.jpeg" alt="">
+    </div>
+</body>
+<script>
+    // base64转化为file文件
+    function base64ToFile(urlData, fileName) {
+        const arr = urlData.split(",");
+        const mime = arr[0].match(/:(.*?);/)[1];
+        const bytes = atob(arr[1]);
+        let n = bytes.length;
+        const ia = new Uint8Array(n);
+        while (n--) {
+            ia[n] = bytes.charCodeAt(n);
+        }
+        return new File([ia], fileName, { type: mime });
+    }
+    window.onload = () => {
+        const dom = document.body
+        html2canvas(dom, {
+            width: dom.width,
+            height: dom.height,
+            useCORS: true, // Whether to attempt to load images from a server using CORS
+            allowTaint: false // 是否允许跨源图像污染画布
+
+        }).then((canvas) => {
+            const imgData = canvas.toDataURL('image/jpeg', 1.0)
+            let timeStamp = new Date().getTime();
+            const imgFile = base64ToFile(imgData, timeStamp + '.png')
+            console.log('step1', imgData, imgFile)
+            httpRequest(imgFile)
+        })
+    }
+
+    // 文件上传
+   function httpRequest(file) {
+      return new Promise((resolve, reject) => {
+        let formData = new FormData();
+        formData.append('file', file);
+        this.$req.post("uploadFile", formData).then((url) => {
+          resolve(url)
+        }, (err) => {
+          reject(err)
+        });
+      });
+  }
+
+</script>
+
+</html>
