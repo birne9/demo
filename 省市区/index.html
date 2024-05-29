@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>省市区三级联动</title>
+    <link rel="stylesheet" href="./asset/css/index.css">
+    <link rel="stylesheet" href="./asset/css/vant.css">
+    <script src="./asset/js/vue.js"></script>
+    <script src="./asset/js/vant.js"></script>
+    <script src="./asset/js/area.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 打开省市区 -->
+        <div class="open-area" @click="openArea()">
+            <span>打开省市区</span>
+        </div>
+        <van-popup v-model:show="showBottom" position="bottom" :style="{ height: '80vh' }">
+            <div class="area">
+                <div class="popup-title">
+                    <span>选择省市区</span>
+                </div>
+                <div class="area-title">
+                    <div>{{province.areaName}}</div>
+                    <div>{{city.areaName}}</div>
+                    <div>{{area.areaName}}</div>
+                </div>
+                <div class="area-scroll">
+                    <div class="area-box">
+                        <div class="box" v-for="(item,idx) in areaArr" :key="idx" @click="select(item,index)">
+                            {{item.areaName}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </van-popup>
+    </div>
+</body>
+<script src="./asset/js/script.js"></script>
+
+</html>
